@@ -17,6 +17,7 @@ public class PlatformPoolManager : Singleton<PlatformPoolManager>
     [SerializeField]
     private float platformLength = 50f;
 
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +58,12 @@ public class PlatformPoolManager : Singleton<PlatformPoolManager>
         pl.transform.position = new Vector3(0,-11,spawnZ);
 
         spawnZ += platformLength;
+
+        if(spawnZ > 1200)
+        {
+            Time.timeScale = 0;
+            SlinkyManager.Instance.LevelComplete();
+        }
     }
 
 
